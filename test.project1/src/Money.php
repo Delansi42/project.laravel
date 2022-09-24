@@ -48,7 +48,6 @@ class Money
         if ($object1->getCurrency() !=  $this->currency) {
             throw new InvalidArgumentException('Неправильная валюта');
         }
-        //return $object1->getAmount() + $this->amount;
         return new Money($this->amount + $object1->getAmount(), $this->currency);
     }
 }
