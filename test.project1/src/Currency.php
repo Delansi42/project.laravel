@@ -11,9 +11,8 @@ class Currency
                       'EUR',
                       'UAH'];
 
-    public function __construct(
-        string $isoCode
-    ) {
+    public function __construct(string $isoCode)
+    {
         $this->setIsoCode($isoCode);
     }
 

@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Tests\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/database": "^9.31",
+    "illuminate/events": "^9.31"
+  }
+}
