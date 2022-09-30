@@ -24,7 +24,7 @@ $blueprint->create();
 $blueprint->foreign('category_id')->references('id')->on('categories');
 $blueprint->build($capsule->getConnection(), new Illuminate\Database\Schema\Grammars\MySqlGrammar());
 
-$blueprint = new Illuminate\Database\Schema\Blueprint('tags');
+$blueprint = new Illuminate\Database\Schema\Blueprint('tag');
 $blueprint->id();
 $blueprint->string('title');
 $blueprint->string('slug');
@@ -39,5 +39,5 @@ $blueprint->foreignId('tag_id');
 $blueprint->timestamps();
 $blueprint->create();
 $blueprint->foreign('post_id')->references('id')->on('posts');
-$blueprint->foreign('tag_id')->references('id')->on('tags');
+$blueprint->foreign('tag_id')->references('id')->on('tag');
 $blueprint->build($capsule->getConnection(), new Illuminate\Database\Schema\Grammars\MySqlGrammar());
