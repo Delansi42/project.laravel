@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <a href="create-category.php" class="btn btn-primary">Add Category</a>
+    <a href="/category/create" class="btn btn-primary">Add Category</a>
     <table class="table">
         <thead>
         <tr>
@@ -22,8 +22,9 @@
                 <td>{{$category->created_at}}</td>
                 <td>{{$category->updated_at}}</td>
                 <td>
-                    <a href="update-category.php?id={{ $category->id }}">Update</a>
-                    <a href="delete-category.php?id={{ $category->id }}">Delete</a>
+                    <a href="/category/{{ $category->id }}/edit">Update</a>
+                    <a href="/category/{{ $category->id }}/delete">Delete</a>
+                    <a href="/category/{{ $category->id }}/show">Show</a>
                 </td>
                 @empty
                     <p>Empty</p>

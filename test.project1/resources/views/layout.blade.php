@@ -12,7 +12,7 @@
           <div class="col">
               <ul class="nav">
                   <li class="nav-item">
-                      <a class="nav-link" href="/public/tag/index.php">Tag</a>
+                      <a class="nav-link" href="/tag">Tag</a>
                   </li>
               </ul>
           </div>
@@ -23,7 +23,7 @@
           <div class="col">
               <ul class="nav">
                   <li class="nav-item">
-                      <a class="nav-link" href="/public/category/index-category.php">Category</a>
+                      <a class="nav-link" href="/category">Category</a>
                   </li>
               </ul>
           </div>

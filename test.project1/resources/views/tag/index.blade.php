@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <a href="create.php" class="btn btn-primary">Add Tag</a>
+    <a href="/tag/create" class="btn btn-primary">Add Tag</a>
     <table class="table">
         <thead>
         <tr>
@@ -22,8 +22,9 @@
             <td>{{$tag->created_at}}</td>
             <td>{{$tag->updated_at}}</td>
             <td>
-                <a href="update.php?id={{ $tag->id }}">Update</a>
-                <a href="delete.php?id={{ $tag->id }}">Delete</a>
+                <a href="/tag/{{ $tag->id }}/edit">Update</a>
+                <a href="/tag/{{ $tag->id }}/delete">Delete</a>
+                <a href="/tag/{{ $tag->id }}/show">Show</a>
             </td>
             @empty
             <p>Empty</p>
