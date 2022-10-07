@@ -1,8 +1,12 @@
 <?php
+
 namespace Tests\Controllers;
 
+use Tests\Model\Category;
+use Tests\Model\Post;
 use Tests\Model\Tag;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\Rule;
 
 class TagController
 {
@@ -21,40 +25,84 @@ class TagController
     public function create()
     {
         $tag = new Tag();
-        return view('tag/create', compact('tag'));
+        $isCreate = true;
+        return view('tag/form', compact('tag', 'isCreate'));
     }
 
     public function store()
     {
-        $request = request();
+        $data = request()->all();
+        $validator = validator()->make($data, [
+            'title' => [
+                'required',
+                'unique:tags,title',
+                'min:3',
+            ],
+            'slug' => [
+                'required',
+                'unique:tags,slug',
+                'min:3',
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            $_SESSION['errors'] = $validator->errors()->toArray();
+            $_SESSION['data'] = $data;
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
 
         $tag = new Tag();
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+        $tag->title = $data['title'];
+        $tag->slug = $data['slug'];
         $tag->save();
+
+        $_SESSION['success'] = 'Запис успішно добавлений';
         return new RedirectResponse('/tag');
     }
 
     public function edit($id)
     {
         $tag = Tag::find($id);
-        return view('tag/update', compact('tag'));
+        $isCreate = false;
+        return view('tag/form', compact('tag', 'isCreate'));
     }
 
     public function update()
     {
-        $request = request();
+        $data = request()->all();
 
-        $tag = Tag::find($request->input('id'));
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+        $tag = Tag::find($data['id']);
+        $tag->title = $data['title'];
+        $tag->slug = $data['slug'];
+
+        $validator = validator()->make($data, [
+            'title' => [
+                'required',
+                'min:3',
+                Rule::unique('tags', 'title')->ignore($tag->id),
+            ],
+            'slug' => [
+                'required',
+                'unique:tags,slug',
+                'min:3',
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            $_SESSION['errors'] = $validator->errors()->toArray();
+            $_SESSION['data'] = $data;
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
+
         $tag->save();
+        $_SESSION['success'] = 'Запис успішно добавлений';
         return new RedirectResponse('/tag');
     }
 
     public function destroy($id)
     {
         $tag = Tag::find($id);
+        $tag->posts()->detach();
         $tag->delete();
         return new RedirectResponse('/tag');
     }

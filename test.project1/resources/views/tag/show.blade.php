@@ -5,7 +5,11 @@
     <ul>
         <li>
             slug: {{ $tag->slug }}
+        </li>
+        <li>
             created: {{ $tag->created_at }}
+        </li>
+        <li>
             updated: {{ $tag->updated_at }}
         </li>
     </ul>

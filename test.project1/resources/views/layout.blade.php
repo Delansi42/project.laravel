@@ -32,6 +32,17 @@
   <div class="container">
       <div class="row">
           <div class="col">
+              <ul class="nav">
+                  <li class="nav-item">
+                      <a class="nav-link" href="/post">Post</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col">
               @yield('content')
           </div>
       </div>
