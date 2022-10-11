@@ -1,16 +1,8 @@
 @extends('layout')
 
 @section('content')
-    @isset($_SESSION['success'])
-        <div class="alert alert-success" role="alert">
-            {{ $_SESSION['success'] }}
-        </div>
-    @endisset
-    @php
-        unset($_SESSION['success']);
-    @endphp
-    <a href="/tag/create" class="btn btn-primary">Add Tag</a>
-    <a href="/tag/trash" class="btn btn-info">Trash</a>
+
+    <a href="/tag/" class="btn btn-info">List</a>
     <table class="table">
         <thead>
         <tr>
@@ -29,11 +21,9 @@
                 <td>{{ $tag->title }}</td>
                 <td>{{ $tag->slug }}</td>
                 <td>{{ $tag->created_at }}</td>
-                <td>{{ $tag->updated_at }}</td>
+                <td>{{ $tag->udpdated_at }}</td>
                 <td>
-                    <a href="/tag/{{ $tag->id }}/edit">Update</a>
-                    <a href="/tag/{{ $tag->id }}/delete">Delete</a>
-                    <a href="/tag/{{ $tag->id }}/show">Show</a>
+                    <a href="/tag/{{ $tag->id }}/restore">Restore</a>
                 </td>
             </tr>
         @empty

@@ -1,16 +1,8 @@
 @extends('layout')
 
 @section('content')
-    @isset($_SESSION['success'])
-        <div class="alert alert-success" role="alert">
-            {{ $_SESSION['success'] }}
-        </div>
-    @endisset
-    @php
-        unset($_SESSION['success']);
-    @endphp
-    <a href="/category/create" class="btn btn-primary">Add Category</a>
-    <a href="/category/trash" class="btn btn-info">Trash</a>
+
+    <a href="/category/" class="btn btn-info">List</a>
     <table class="table">
         <thead>
         <tr>
@@ -31,9 +23,7 @@
                 <td>{{ $category->created_at }}</td>
                 <td>{{ $category->updated_at }}</td>
                 <td>
-                    <a href="/category/{{ $category->id }}/edit">Update</a>
-                    <a href="/category/{{ $category->id }}/delete">Delete</a>
-                    <a href="/category/{{ $category->id }}/show">Show</a>
+                    <a href="/category/{{ $category->id }}/restore">Restore</a>
                 </td>
             </tr>
         @empty

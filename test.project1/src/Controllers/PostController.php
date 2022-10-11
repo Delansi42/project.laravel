@@ -16,6 +16,20 @@ class PostController
         return view('post/index', compact('posts'));
     }
 
+    public function trash()
+    {
+        $posts = Post::onlyTrashed()->get();
+        return view('post/trash', compact('posts'));
+    }
+
+    public function restore($id)
+    {
+        Post::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/post');
+    }
+
     public function show($id)
     {
         $post = Post::find($id);
@@ -108,8 +122,15 @@ class PostController
     public function destroy($id)
     {
         $post = Post::find($id);
-        $post->tags()->detach();
         $post->delete();
+        return new RedirectResponse('/post');
+    }
+
+    public function forceDelete($id)
+    {
+        $post = Post::find($id);
+        $post->tags()->detach();
+        $post->forceDelete();
         return new RedirectResponse('/post');
     }
 }
