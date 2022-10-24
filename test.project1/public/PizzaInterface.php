@@ -121,7 +121,6 @@ $pizza1 = new Pizza1();
 $pizza2 = new Pizza2();
 $pizza3 = new Pizza3();
 
-
 $post = new PizzaCalculator();
 $post->add($pizza1);
 $post->add($pizza2);
