@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\PostTag;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -77,8 +76,9 @@ class AdminPostController
 
     public function destroy($id)
     {
-        PostTag::where('post_id', $id)->delete();
-        Post::find($id)->delete();
+        $post = Post::find($id);
+        $post->tags()->detach();
+        $post->delete();
         return redirect()->route('admin.post');
     }
 }
