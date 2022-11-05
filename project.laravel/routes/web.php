@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminTagController;
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\AdminPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +23,16 @@ use App\Http\Controllers\AdminPanelController;
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
 
-Route::get('/post', [\App\Http\Controllers\PostController::class, 'index']);
-Route::get('/author/{id}', [\App\Http\Controllers\PostController::class, 'authorPosts'])->name('post.authorPosts');
-Route::get('/category/{id}', [\App\Http\Controllers\PostController::class, 'categoryPosts'])->name('post.categoryPosts');
-Route::get('/author/{authorId}/category/{categoryId}', [\App\Http\Controllers\PostController::class, 'authorCategoryPosts'])->name('post.authorCategoryPosts');
-Route::get('/author/{authorId}/category/{categoryId}/tag/{tagId}', [\App\Http\Controllers\PostController::class, 'authorCategoryTagPosts'])->name('post.authorCategoryTagPosts');
-Route::get('/tag/{id}', [\App\Http\Controllers\PostController::class, 'tagPosts'])->name('post.tagPosts');
+Route::get('/page', [PageController::class, 'index'])->name('page');
+Route::get('/page/{id}', [PageController::class, 'show'])->name('page.show');
+Route::post('/page/comment/{id}', [PageController::class, 'addComment'])->name('page.add.comment');
+
+Route::get('/post', [PostController::class, 'index']);
+Route::get('/author/{id}', [PostController::class, 'authorPosts'])->name('post.authorPosts');
+Route::get('/category/{id}', [PostController::class, 'categoryPosts'])->name('post.categoryPosts');
+Route::get('/author/{authorId}/category/{categoryId}', [PostController::class, 'authorCategoryPosts'])->name('post.authorCategoryPosts');
+Route::get('/author/{authorId}/category/{categoryId}/tag/{tagId}', [PostController::class, 'authorCategoryTagPosts'])->name('post.authorCategoryTagPosts');
+Route::get('/tag/{id}', [PostController::class, 'tagPosts'])->name('post.tagPosts');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/auth/login', [AuthController::class, 'login'])->name('auth.login');

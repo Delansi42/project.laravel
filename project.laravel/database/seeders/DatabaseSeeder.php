@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Page;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Tag;
@@ -29,5 +30,7 @@ class DatabaseSeeder extends Seeder
         $posts->each(function ($post) use ($tags) {
             $post->tags()->attach($tags->random(rand(5, 10))->pluck('id'));
         });
+
+        Page::factory(20)->create();
     }
 }

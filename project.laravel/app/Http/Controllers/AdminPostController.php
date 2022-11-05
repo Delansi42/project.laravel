@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -8,16 +9,19 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class AdminPostController
+class AdminPostController extends Controller
 {
+
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::paginate(10);
         return view('admin/post/index', compact('posts'));
     }
 
     public function create()
     {
+        $this->authorize('create', Post::class);
+
         $post = new Post();
         $users = User::all();
         $tags = Tag::all();
@@ -27,6 +31,8 @@ class AdminPostController
 
     public function store(Request $request)
     {
+        $this->authorize('store', Post::class);
+
         $request->validate([
             'title' => [
                 'required',
@@ -44,9 +50,14 @@ class AdminPostController
         return redirect()->route('admin.post');
     }
 
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $post = Post::find($id);
+
+        if ($request->user()->cannot('update', $post)) {
+            abort(403);
+        }
+
         $users = User::all();
         $tags = Tag::all();
         $categories = Category::all();
@@ -56,6 +67,10 @@ class AdminPostController
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
+
+        if ($request->user()->cannot('update', $post)) {
+            abort(403);
+        }
 
         $request->validate([
             'title' => [
@@ -74,9 +89,14 @@ class AdminPostController
         return redirect()->route('admin.post');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $post = Post::find($id);
+
+        if ($request->user()->cannot('update', $post)) {
+            abort(403);
+        }
+
         $post->tags()->detach();
         $post->delete();
         return redirect()->route('admin.post');
