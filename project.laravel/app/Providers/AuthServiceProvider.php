@@ -32,5 +32,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('access', function (User $user) {
             return $user->access_level === 'admin';
         });
+
+        Gate::define('access_manager', function (User $user) {
+            return in_array($user->access_level, ['manager', 'admin']);
+        });
     }
 }

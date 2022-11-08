@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
@@ -16,6 +17,29 @@ class AdminPostController extends Controller
     {
         $posts = Post::paginate(10);
         return view('admin/post/index', compact('posts'));
+    }
+
+    public function show($id)
+    {
+        return view('admin/post/show', [
+            'post' => Post::find($id)
+        ]);
+    }
+
+    public function addComment(Request $request, $id)
+    {
+        $request->validate([
+            'body' => [
+                'required',
+                'min:5',
+            ],
+        ]);
+        $post = Post::find($id);
+        $comment = new Comment();
+        $comment->body = $request->input('body');
+        $post->comments()->save($comment);
+
+        return redirect()->route('admin.post.show', ['id' => $post->id]);
     }
 
     public function create()

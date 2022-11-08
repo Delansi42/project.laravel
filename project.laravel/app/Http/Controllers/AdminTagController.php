@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -11,6 +12,29 @@ class AdminTagController
     {
         $tags = Tag::paginate(5);
         return view('admin/tag/index', compact('tags'));
+    }
+
+    public function show($id)
+    {
+        return view('admin/tag/show', [
+            'tag' => Tag::find($id)
+        ]);
+    }
+
+    public function addComment(Request $request, $id)
+    {
+        $request->validate([
+            'body' => [
+                'required',
+                'min:5',
+            ],
+        ]);
+        $tag = Tag::find($id);
+        $comment = new Comment();
+        $comment->body = $request->input('body');
+        $tag->comments()->save($comment);
+
+        return redirect()->route('admin.tag.show', ['id' => $tag->id]);
     }
 
     public function create()

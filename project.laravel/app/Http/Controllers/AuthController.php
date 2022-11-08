@@ -10,7 +10,19 @@ class AuthController
 {
     public function login()
     {
-        return view('auth/form');
+        $google = 'https://accounts.google.com/o/oauth2/auth';
+        $parameters = [
+            'redirect_uri'  => 'http://f28f-91-123-150-234.ngrok.io/oauth/google/callback',
+            'response_type' => 'code',
+            'client_id'     => '990218787338-bp58r3af38ponaetgp4ap58bt9pbf35n.apps.googleusercontent.com',
+            'scope'         => implode(' ', [
+                'https://www.googleapis.com/auth/userinfo.email',
+                'https://www.googleapis.com/auth/userinfo.profile'
+            ]),
+        ];
+        $google .= '?' . http_build_query($parameters);
+
+        return view('auth/form', compact('google'));
     }
 
     public function handleLogin(Request $request)

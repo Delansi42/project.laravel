@@ -1,21 +1,21 @@
 @extends('layout')
 
 @section('content')
-    <h1>Page: {{ $page->title }}</h1>
-    <p>{{ $page->description }}</p>
+    <h1>Post: {{ $post->title }}</h1>
+    <p>{{ $post->body }}</p>
 
     <hr>
     <div>
         <p>Comments</p>
         <ul>
-            @foreach($page->comments as $comment)
+            @foreach($post->comments as $comment)
                 <li>{{ $comment->body }}</li>
             @endforeach
         </ul>
     </div>
 
     <div>
-        <form action="{{ route('page.add.comment', ['id' => $page->id]) }}" method="post">
+        <form action="{{ route('admin.post.add.comment', ['id' => $post->id]) }}" method="post">
             @csrf
 
             <div class="mb-3">

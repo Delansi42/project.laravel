@@ -16,4 +16,9 @@ class Tag extends Model {
     public function posts(){
         return $this->belongsToMany(Post::class, 'post_tag')->withTimestamps();
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

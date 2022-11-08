@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -11,6 +12,29 @@ class AdminCategoryController
     {
         $categories = Category::paginate(5);
         return view('admin/category/index', compact('categories'));
+    }
+
+    public function show($id)
+    {
+        return view('admin/category/show', [
+            'category' => Category::find($id)
+        ]);
+    }
+
+    public function addComment(Request $request, $id)
+    {
+        $request->validate([
+            'body' => [
+                'required',
+                'min:5',
+            ],
+        ]);
+        $category = Category::find($id);
+        $comment = new Comment();
+        $comment->body = $request->input('body');
+        $category->comments()->save($comment);
+
+        return redirect()->route('admin.category.show', ['id' => $category->id]);
     }
 
     public function create()
