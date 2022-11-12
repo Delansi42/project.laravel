@@ -10,19 +10,15 @@ class AuthController
 {
     public function login()
     {
-        $google = 'https://accounts.google.com/o/oauth2/auth';
+        $gitHub = 'https://github.com/login/oauth/authorize';
         $parameters = [
-            'redirect_uri'  => 'http://f28f-91-123-150-234.ngrok.io/oauth/google/callback',
-            'response_type' => 'code',
-            'client_id'     => '990218787338-bp58r3af38ponaetgp4ap58bt9pbf35n.apps.googleusercontent.com',
-            'scope'         => implode(' ', [
-                'https://www.googleapis.com/auth/userinfo.email',
-                'https://www.googleapis.com/auth/userinfo.profile'
-            ]),
+            'client_id' => getenv('OAUTH_GITHUB_CLIENT_ID'),
+            'redirect_uri' => getenv('OAUTH_GITHUB_REDIRECT_URI'),
+            'scope' => 'user',
         ];
-        $google .= '?' . http_build_query($parameters);
+        $gitHub .= '?' . http_build_query($parameters);
 
-        return view('auth/form', compact('google'));
+        return view('auth/form', compact('gitHub'));
     }
 
     public function handleLogin(Request $request)

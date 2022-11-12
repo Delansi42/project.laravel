@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\GitHubController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +24,7 @@ use App\Http\Controllers\AdminPostController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
-Route::get('/oauth/google/callback', GoogleController::class)->name('oauth.google.callback');
+Route::get('/oauth/github/callback', GitHubController::class)->name('oauth.github.callback');
 
 Route::get('/page', [PageController::class, 'index'])->name('page');
 Route::get('/page/{id}', [PageController::class, 'show'])->name('page.show');

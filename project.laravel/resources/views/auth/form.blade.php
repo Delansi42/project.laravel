@@ -32,6 +32,6 @@
         <button type="submit" class="btn btn-primary">Submit</button>
 
         <br>
-        <a href="{{ $google }}">Google</a>
+        <a href="{{ $gitHub }}">GitHub</a>
     </form>
 @endsection()
