@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad5071599efa9872624fb51d70bbebc0",
+    "content-hash": "1b1d9a71b93a5d0094ca808e337964ad",
     "packages": [
         {
             "name": "brick/math",
@@ -61,6 +61,49 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
+        },
+        {
+            "name": "cnwyt/user-agent-parser",
+            "version": "0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cnwyt/UserAgentParser.git",
+                "reference": "93c0c70c0c0ed92caee0d722d86fcd23d34172f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cnwyt/UserAgentParser/zipball/93c0c70c0c0ed92caee0d722d86fcd23d34172f0",
+                "reference": "93c0c70c0c0ed92caee0d722d86fcd23d34172f0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cnwyt\\UserAgentParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WYT",
+                    "email": "cnwyt@outlook.com"
+                }
+            ],
+            "description": "A Simple PHP Useragent Parser",
+            "support": {
+                "issues": "https://github.com/cnwyt/UserAgentParser/issues",
+                "source": "https://github.com/cnwyt/UserAgentParser/tree/master"
+            },
+            "time": "2018-09-13T10:54:03+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -303,6 +346,75 @@
                 }
             ],
             "time": "2022-02-28T11:07:21+00:00"
+        },
+        {
+            "name": "donatj/phpuseragentparser",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/donatj/PhpUserAgent.git",
+                "reference": "a35900b93530715f8669c10e49756adde5c8e6fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/donatj/PhpUserAgent/zipball/a35900b93530715f8669c10e49756adde5c8e6fc",
+                "reference": "a35900b93530715f8669c10e49756adde5c8e6fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "camspiers/json-pretty": "~1.0",
+                "donatj/drop": "*",
+                "ext-json": "*",
+                "phpunit/phpunit": "~4.8|~9"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/UserAgentParser.php"
+                ],
+                "psr-4": {
+                    "donatj\\UserAgent\\": "src/UserAgent"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse G. Donat",
+                    "email": "donatj@gmail.com",
+                    "homepage": "https://donatstudios.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lightning fast, minimalist PHP UserAgent string parser.",
+            "homepage": "https://donatstudios.com/PHP-Parser-HTTP_USER_AGENT",
+            "keywords": [
+                "browser",
+                "browser detection",
+                "parser",
+                "user agent",
+                "useragent"
+            ],
+            "support": {
+                "issues": "https://github.com/donatj/PhpUserAgent/issues",
+                "source": "https://github.com/donatj/PhpUserAgent/tree/v1.7.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/donatj/15",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/donatj",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-06T15:41:58+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",

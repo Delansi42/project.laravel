@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\GitHubController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserAgentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminTagController;
@@ -25,6 +26,8 @@ use App\Http\Controllers\AdminPostController;
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
 Route::get('/oauth/github/callback', GitHubController::class)->name('oauth.github.callback');
+
+Route::get('/useragent', [UserAgentController::class, 'index']);
 
 Route::get('/page', [PageController::class, 'index'])->name('page');
 Route::get('/page/{id}', [PageController::class, 'show'])->name('page.show');
