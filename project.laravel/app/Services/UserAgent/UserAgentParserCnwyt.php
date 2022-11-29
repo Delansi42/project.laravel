@@ -7,10 +7,10 @@ class UserAgentParserCnwyt implements UserAgentInterface
 {
     protected $_data;
 
-    public function parse()
+    public function parse($userAgent)
     {
         $parser = new CnwytParser();
-        $parser->setUserAgent(request()->userAgent());
+        $parser->setUserAgent($userAgent);
         $this->_data = $parser;
     }
 

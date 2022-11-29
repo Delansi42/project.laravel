@@ -7,7 +7,7 @@ class UserAgentParser implements UserAgentInterface
 {
     protected $_data;
 
-    public function parse()
+    public function parse($userAgent)
     {
         $parser = new VendorUserAgentParser();
         $this->_data = $parser->parse();

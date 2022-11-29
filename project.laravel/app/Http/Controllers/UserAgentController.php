@@ -9,7 +9,7 @@ class UserAgentController
 {
     public function index(UserAgentInterface $reader)
     {
-        $reader->parse();
+        $reader->parse(request()->userAgent());
         $browser = $reader->getBrowser();
         $operatingSystem = $reader->getOperatingSystem();
         if (!empty($browser) && !empty($operatingSystem)) {
