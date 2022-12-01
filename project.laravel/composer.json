@@ -6,8 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "cnwyt/user-agent-parser": "^0.6.0",
-        "donatj/phpuseragentparser": "^1.7",
+        "delansi42/package1": "0.0.1",
+        "delansi42/package2": "0.0.1",
+        "delansi42/package3": "0.0.1",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
@@ -23,6 +24,12 @@
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
     },
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/Delansi42/package3.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",

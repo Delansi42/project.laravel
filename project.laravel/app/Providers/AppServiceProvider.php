@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Services\UserAgent\UserAgentParserCnwyt;
-use App\Services\UserAgent\UserAgentInterface;
-use App\Services\UserAgent\UserAgentParser;
 use Illuminate\Support\ServiceProvider;
+use Package1\UserAgentInterface;
+use Package2\UserAgentParser;
+use Package3\UserAgentParserCnwyt;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(UserAgentInterface::class, function () {
-            return new UserAgentParser();
-            //return new UserAgentParserCnwyt();
+            //return new UserAgentParser();
+            return new UserAgentParserCnwyt();
         });
     }
 

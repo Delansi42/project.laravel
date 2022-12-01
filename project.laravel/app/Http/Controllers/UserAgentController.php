@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Visit;
-use App\Services\UserAgent\UserAgentInterface;
+use Package1\UserAgentInterface;
 
 class UserAgentController
 {
