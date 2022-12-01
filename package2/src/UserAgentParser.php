@@ -1,7 +1,8 @@
 <?php
-namespace App\Services\UserAgent;
+namespace Package2;
 
 use donatj\UserAgent\UserAgentParser as VendorUserAgentParser;
+use Package1\UserAgentInterface;
 
 class UserAgentParser implements UserAgentInterface
 {
