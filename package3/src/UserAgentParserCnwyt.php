@@ -1,7 +1,8 @@
 <?php
-namespace App\Services\UserAgent;
+namespace Package3;
 
 use Cnwyt\UserAgentParser\UserAgentParser as CnwytParser;
+use Package1\UserAgentInterface;
 
 class UserAgentParserCnwyt implements UserAgentInterface
 {
