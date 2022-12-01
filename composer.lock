@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c4ad47514667d7cc209d7111ddcdbe3",
+    "content-hash": "b26622173afcccb1cf7db3544a0bedc9",
     "packages": [
         {
             "name": "brick/math",
@@ -61,49 +61,6 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
-        },
-        {
-            "name": "cnwyt/user-agent-parser",
-            "version": "0.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cnwyt/UserAgentParser.git",
-                "reference": "93c0c70c0c0ed92caee0d722d86fcd23d34172f0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cnwyt/UserAgentParser/zipball/93c0c70c0c0ed92caee0d722d86fcd23d34172f0",
-                "reference": "93c0c70c0c0ed92caee0d722d86fcd23d34172f0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Cnwyt\\UserAgentParser\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "WYT",
-                    "email": "cnwyt@outlook.com"
-                }
-            ],
-            "description": "A Simple PHP Useragent Parser",
-            "support": {
-                "issues": "https://github.com/cnwyt/UserAgentParser/issues",
-                "source": "https://github.com/cnwyt/UserAgentParser/tree/master"
-            },
-            "time": "2018-09-13T10:54:03+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

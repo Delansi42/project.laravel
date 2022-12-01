@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\UserAgent;
+namespace Package1;
 
 interface UserAgentInterface
 {

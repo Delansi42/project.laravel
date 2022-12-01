@@ -1,25 +1,24 @@
 {
-  "name": "vagrant/package3",
-  "description": "package",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "anastasiia.bulatova",
-      "email": "delansi42@gmail.com"
+    "name": "vagrant/package1",
+    "description": "package",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "anastasiia.bulatova",
+            "email": "delansi42@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Package1\\": "src/"
+        }
+    },
+    "require": {
+        "laravel/framework": "^9.19"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7"
     }
-  ],
-  "minimum-stability": "dev",
-  "autoload": {
-    "psr-4": {
-      "Package3\\": "src/"
-    }
-  },
-  "require": {
-    "cnwyt/user-agent-parser": "^0.6.0",
-    "laravel/framework": "^9.19"
-  },
-  "require-dev": {
-    "barryvdh/laravel-debugbar": "^3.7"
-  }
 }
